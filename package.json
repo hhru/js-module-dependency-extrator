@@ -1,0 +1,32 @@
+{
+  "name": "@hh.ru/js-module-dependency-extrator",
+  "version": "0.0.3",
+  "main": "lib/index.js",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "mocha": "^2.2.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hhru/js-module-dependency-extrator"
+  },
+  "private": false,
+  "scripts": {
+    "clean": "rm -rf lib",
+    "build": "babel src -d lib",
+    "test": "mocha --compilers js:babel-register",
+    "test:watch": "yarn run test -- --watch",
+    "prepublish": "yarn clean && yarn build"
+  },
+  "keywords": [
+    "dependency-extrator"
+  ],
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "del": "^3.0.0",
+    "glob-all": "^3.1.0"
+  }
+}
+
