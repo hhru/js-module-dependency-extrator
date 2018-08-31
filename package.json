@@ -1,6 +1,6 @@
 {
   "name": "@hh.ru/js-module-dependency-extrator",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "lib/index.js",
   "devDependencies": {
     "babel-cli": "^6.26.0",

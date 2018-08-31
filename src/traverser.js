@@ -17,7 +17,8 @@ export default (cb, opts = {}) => {
             enter({ node }) {
                 if (types.isCallExpression(node) && node.callee.name === 'define') {
                     const dependencies = node.arguments[0].elements.reduce((result, node) => {
-                        const pathModule = nodePath.join(modulesPath, `${node.value}.js`);
+                        const ext = node.value.endsWith('mustache') ? '' : '.js';
+                        const pathModule = nodePath.join(modulesPath, `${node.value}${ext}`);
                         if (fs.existsSync(pathModule)) {
                             result.push(pathModule);
                         }
