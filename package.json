@@ -1,12 +1,18 @@
 {
   "name": "@hh.ru/js-module-dependency-extrator",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "main": "lib/index.js",
   "devDependencies": {
+    "@hh.ru/eslint-config": "^3.0.1",
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^9.0.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-0": "^6.24.1",
-    "mocha": "^2.2.5"
+    "eslint": "~4.19.1",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-prettier": "^2.6.2",
+    "mocha": "^2.2.5",
+    "prettier": "^1.14.2"
   },
   "repository": {
     "type": "git",
@@ -29,4 +35,3 @@
     "glob-all": "^3.1.0"
   }
 }
-

@@ -1,1 +1,1 @@
-["Index","AdditionalComponent/index","AdditionalComponent/Some"]
+["Index.js","AdditionalComponent/index.js","AdditionalComponent/Some.js","AdditionalComponent/Template.mustache"]

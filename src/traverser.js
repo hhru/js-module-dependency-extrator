@@ -3,9 +3,8 @@ import nodePath from 'path';
 import { types } from 'babel-core';
 
 export default (cb, opts = {}) => {
-    const { modulesPath } = opts;
+    const { modulesPath, filename } = opts;
     let importDeclarationPaths = [];
-
     return {
         Program: {
             exit() {
@@ -27,6 +26,26 @@ export default (cb, opts = {}) => {
                     }, []);
 
                     importDeclarationPaths = importDeclarationPaths.concat(dependencies);
+                }
+            },
+        },
+
+        ImportDeclaration: {
+            enter({ node }) {
+                if (node && node.source && node.source.value) {
+                    const moduleDir =
+                        node.source.value[0] === '.'
+                            ? filename.slice(modulesPath.length, filename.lastIndexOf('/'))
+                            : '';
+                    const ext = node.source.value.endsWith('mustache') ? '' : '.js';
+                    const jsModule = nodePath.join(modulesPath, moduleDir, `${node.source.value}${ext}`);
+                    const jsIndexModule = nodePath.join(modulesPath, moduleDir, `${node.source.value}/index${ext}`);
+
+                    if (fs.existsSync(jsModule)) {
+                        importDeclarationPaths = importDeclarationPaths.concat(jsModule);
+                    } else if (fs.existsSync(jsIndexModule)) {
+                        importDeclarationPaths = importDeclarationPaths.concat(jsIndexModule);
+                    }
                 }
             },
         },
