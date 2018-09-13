@@ -1,1 +1,1 @@
-define([] , {})
+define(['AdditionalComponent/Template.mustache'], {})

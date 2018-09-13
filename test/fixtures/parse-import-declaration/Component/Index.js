@@ -1,0 +1,2 @@
+import AdditionalComponent from 'AdditionalComponent';
+

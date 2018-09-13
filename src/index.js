@@ -48,10 +48,9 @@ export const extractModuleDependenciesFromFile = (file, opts = {}, cb = noop) =>
     );
 };
 
-let dependencyList = [];
-
 const extractModuleTreeDependenciesFromFile = (file, opts = {}) => {
     const cachedFiles = {};
+    let dependencyList = [];
 
     function _extractModuleTreeDependenciesFromFile(file, opts) {
         let moduleDependecies = [];
@@ -85,15 +84,8 @@ export default (globArr, opts = {}) => {
     }, []);
 
     const modulesPath = path.resolve(__dirname, opts.modulesPath);
+
     staticValues = [...new Set(staticValues.map((item) => item.slice(modulesPath.length + backslashLength)))];
-
-    staticValues = staticValues.map((item) => {
-        if (item.indexOf(mustacheExt)) {
-            return item.slice(0, -jsExtLength);
-        }
-
-        return item;
-    })
 
     if (fs.existsSync(`${saveFilePath}/${opts.saveFileName}.${opts.saveFileExt}`)) {
         previousContent = fs
