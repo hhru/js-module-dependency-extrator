@@ -6,6 +6,7 @@
     "@babel/cli": "^7.5.0",
     "@babel/plugin-proposal-function-bind": "^7.2.0",
     "@babel/preset-env": "^7.5.4",
+    "@babel/register": "^7.5.5",
     "@hh.ru/eslint-config": "^3.0.1",
     "babel-eslint": "^9.0.0",
     "eslint": "~4.19.1",
@@ -22,7 +23,7 @@
   "scripts": {
     "clean": "rm -rf lib",
     "build": "babel src -d lib",
-    "test": "mocha --compilers js:babel-register",
+    "test": "mocha --compilers js:@babel/register",
     "test:watch": "yarn run test -- --watch",
     "prepublish": "yarn clean && yarn build"
   },
