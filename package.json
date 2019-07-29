@@ -1,13 +1,14 @@
 {
   "name": "@hh.ru/js-module-dependency-extrator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "lib/index.js",
   "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/plugin-proposal-function-bind": "^7.2.0",
+    "@babel/preset-env": "^7.5.4",
+    "@babel/register": "^7.5.5",
     "@hh.ru/eslint-config": "^3.0.1",
-    "babel-cli": "^6.26.0",
     "babel-eslint": "^9.0.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-stage-0": "^6.24.1",
     "eslint": "~4.19.1",
     "eslint-config-prettier": "^3.0.1",
     "eslint-plugin-prettier": "^2.6.2",
@@ -22,7 +23,7 @@
   "scripts": {
     "clean": "rm -rf lib",
     "build": "babel src -d lib",
-    "test": "mocha --compilers js:babel-register",
+    "test": "mocha --compilers js:@babel/register",
     "test:watch": "yarn run test -- --watch",
     "prepublish": "yarn clean && yarn build"
   },
@@ -30,7 +31,7 @@
     "dependency-extrator"
   ],
   "dependencies": {
-    "babel-core": "^6.26.3",
+    "@babel/core": "^7.5.4",
     "del": "^3.0.0",
     "glob-all": "^3.1.0"
   }
