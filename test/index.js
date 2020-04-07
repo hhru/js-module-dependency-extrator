@@ -15,16 +15,16 @@ describe('Extract module dependencies from glob', () => {
         it(`should ${caseName.split('-').join(' ')}`, () => {
             const fixtureDir = path.join(fixturesDir, caseName);
 
-            del.sync(path.join(fixtureDir, 'expected/*.js'));
+            del.sync(path.join(fixtureDir, 'actual/*.js'));
 
             extractModuleDependenciesFromGlob([path.join(fixtureDir, '/Component/*.js')], {
-                saveFilePath: path.join(fixtureDir, 'expected'),
+                saveFilePath: path.join(fixtureDir),
                 saveFileExt: 'js',
-                saveFileName: 'Component',
+                saveFileName: 'actual',
                 modulesPath: path.join(fixtureDir, '/Component'),
             });
 
-            const expected = fs.readFileSync(path.join(fixtureDir, 'expected/Component.js')).toString();
+            const expected = fs.readFileSync(path.join(fixtureDir, 'expected.js')).toString();
 
             const actual = fs.readFileSync(path.join(fixtureDir, './actual.js')).toString();
 

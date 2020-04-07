@@ -9,10 +9,10 @@
     "@babel/register": "^7.5.5",
     "@hh.ru/eslint-config": "^3.0.1",
     "babel-eslint": "^9.0.0",
-    "eslint": "~4.19.1",
+    "eslint": "^6.8.0",
     "eslint-config-prettier": "^3.0.1",
     "eslint-plugin-prettier": "^2.6.2",
-    "mocha": "^2.2.5",
+    "mocha": "^7.1.1",
     "prettier": "^1.14.2"
   },
   "repository": {
@@ -23,7 +23,7 @@
   "scripts": {
     "clean": "rm -rf lib",
     "build": "babel src -d lib",
-    "test": "mocha --compilers js:@babel/register",
+    "test": "mocha --require @babel/register",
     "test:watch": "yarn run test -- --watch",
     "prepublish": "yarn clean && yarn build"
   },
@@ -33,6 +33,9 @@
   "dependencies": {
     "@babel/core": "^7.5.4",
     "del": "^3.0.0",
-    "glob-all": "^3.1.0"
+    "glob-all": "^3.2.1"
+  },
+  "resolutions": {
+    "kind-of": "6.0.3"
   }
 }

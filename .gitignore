@@ -5,3 +5,4 @@ node_modules
 *.log
 lib
 test/fixtures/**/expected/*
+actual.js
